@@ -1,0 +1,15 @@
+--- a/configure	2017-11-21 16:52:11.335376664 -0800
++++ b/configure	2017-11-21 16:52:44.038375323 -0800
+@@ -278,12 +278,6 @@
+ 	true
+     elif [ "${option}" = '--disable-dependency-tracking' ] ; then
+ 	true
+-    else
+-	echo "Unrecognized option: ${option}"
+-	echo "See:"
+-	echo "	$0 --help"
+-	echo ""
+-	exit 1
+     fi
+ done
+ 
