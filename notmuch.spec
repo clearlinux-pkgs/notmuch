@@ -4,7 +4,7 @@
 #
 Name     : notmuch
 Version  : 0.26
-Release  : 7
+Release  : 8
 URL      : https://notmuchmail.org/releases/notmuch-0.26.tar.gz
 Source0  : https://notmuchmail.org/releases/notmuch-0.26.tar.gz
 Summary  : Thread-based email index, search and tagging
@@ -13,6 +13,7 @@ License  : GPL-3.0 GPL-3.0+ LGPL-2.1
 Requires: notmuch-bin
 Requires: notmuch-lib
 Requires: notmuch-data
+Requires: talloc-lib
 BuildRequires : gmime
 BuildRequires : gmime-dev
 BuildRequires : go
@@ -90,12 +91,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1515518987
+export SOURCE_DATE_EPOCH=1521589479
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1515518987
+export SOURCE_DATE_EPOCH=1521589479
 rm -rf %{buildroot}
 %make_install
 
