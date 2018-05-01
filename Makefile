@@ -1,5 +1,5 @@
 PKG_NAME := notmuch
-URL = https://notmuchmail.org/releases/notmuch-0.26.1.tar.gz
+URL = 
 ARCHIVES = 
 
 include ../common/Makefile.common

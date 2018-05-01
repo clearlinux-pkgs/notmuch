@@ -4,7 +4,7 @@
 #
 Name     : notmuch
 Version  : 0.26.1
-Release  : 9
+Release  : 10
 URL      : https://notmuchmail.org/releases/notmuch-0.26.1.tar.gz
 Source0  : https://notmuchmail.org/releases/notmuch-0.26.1.tar.gz
 Summary  : Thread-based email index, search and tagging
@@ -91,12 +91,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522680100
+export SOURCE_DATE_EPOCH=1525187586
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1522680100
+export SOURCE_DATE_EPOCH=1525187586
 rm -rf %{buildroot}
 %make_install
 
