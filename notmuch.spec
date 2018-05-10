@@ -4,7 +4,7 @@
 #
 Name     : notmuch
 Version  : 0.26.1
-Release  : 10
+Release  : 11
 URL      : https://notmuchmail.org/releases/notmuch-0.26.1.tar.gz
 Source0  : https://notmuchmail.org/releases/notmuch-0.26.1.tar.gz
 Summary  : Thread-based email index, search and tagging
