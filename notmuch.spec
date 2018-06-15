@@ -20,7 +20,7 @@ BuildRequires : gmime-dev
 BuildRequires : go
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : setuptools
