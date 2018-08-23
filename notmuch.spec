@@ -4,7 +4,7 @@
 #
 Name     : notmuch
 Version  : 0.27
-Release  : 14
+Release  : 15
 URL      : https://notmuchmail.org/releases/notmuch-0.27.tar.gz
 Source0  : https://notmuchmail.org/releases/notmuch-0.27.tar.gz
 Summary  : Thread-based email index, search and tagging
@@ -15,15 +15,11 @@ Requires: notmuch-lib
 Requires: notmuch-license
 Requires: notmuch-data
 Requires: talloc-lib
+BuildRequires : buildreq-distutils3
+BuildRequires : buildreq-golang
 BuildRequires : gmime
 BuildRequires : gmime-dev
-BuildRequires : go
-BuildRequires : pbr
-BuildRequires : pip
-
-BuildRequires : python3-dev
 BuildRequires : ruby
-BuildRequires : setuptools
 BuildRequires : talloc
 BuildRequires : talloc-dev
 BuildRequires : valgrind
@@ -110,19 +106,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528896501
+export SOURCE_DATE_EPOCH=1535067294
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1528896501
+export SOURCE_DATE_EPOCH=1535067294
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/notmuch
-cp COPYING-GPL-3 %{buildroot}/usr/share/doc/notmuch/COPYING-GPL-3
 cp COPYING %{buildroot}/usr/share/doc/notmuch/COPYING
-cp debian/copyright %{buildroot}/usr/share/doc/notmuch/debian_copyright
-cp contrib/go/LICENSE %{buildroot}/usr/share/doc/notmuch/contrib_go_LICENSE
+cp COPYING-GPL-3 %{buildroot}/usr/share/doc/notmuch/COPYING-GPL-3
 cp bindings/python/docs/COPYING %{buildroot}/usr/share/doc/notmuch/bindings_python_docs_COPYING
+cp contrib/go/LICENSE %{buildroot}/usr/share/doc/notmuch/contrib_go_LICENSE
+cp debian/copyright %{buildroot}/usr/share/doc/notmuch/debian_copyright
 %make_install
 
 %files
