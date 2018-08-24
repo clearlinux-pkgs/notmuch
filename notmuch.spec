@@ -4,7 +4,7 @@
 #
 Name     : notmuch
 Version  : 0.27
-Release  : 15
+Release  : 16
 URL      : https://notmuchmail.org/releases/notmuch-0.27.tar.gz
 Source0  : https://notmuchmail.org/releases/notmuch-0.27.tar.gz
 Summary  : Thread-based email index, search and tagging
@@ -14,7 +14,9 @@ Requires: notmuch-bin
 Requires: notmuch-lib
 Requires: notmuch-license
 Requires: notmuch-data
+Requires: notmuch-man
 Requires: talloc-lib
+BuildRequires : Sphinx
 BuildRequires : buildreq-distutils3
 BuildRequires : buildreq-golang
 BuildRequires : gmime
@@ -46,6 +48,7 @@ Summary: bin components for the notmuch package.
 Group: Binaries
 Requires: notmuch-data
 Requires: notmuch-license
+Requires: notmuch-man
 
 %description bin
 bin components for the notmuch package.
@@ -74,6 +77,7 @@ dev components for the notmuch package.
 %package doc
 Summary: doc components for the notmuch package.
 Group: Documentation
+Requires: notmuch-man
 
 %description doc
 doc components for the notmuch package.
@@ -97,6 +101,14 @@ Group: Default
 license components for the notmuch package.
 
 
+%package man
+Summary: man components for the notmuch package.
+Group: Default
+
+%description man
+man components for the notmuch package.
+
+
 %prep
 %setup -q -n notmuch-0.27
 %patch1 -p1
@@ -106,12 +118,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535067294
+export SOURCE_DATE_EPOCH=1535141415
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1535067294
+export SOURCE_DATE_EPOCH=1535141415
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/notmuch
 cp COPYING %{buildroot}/usr/share/doc/notmuch/COPYING
@@ -175,3 +187,25 @@ cp debian/copyright %{buildroot}/usr/share/doc/notmuch/debian_copyright
 /usr/share/doc/notmuch/COPYING-GPL-3
 /usr/share/doc/notmuch/bindings_python_docs_COPYING
 /usr/share/doc/notmuch/contrib_go_LICENSE
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/notmuch-address.1.gz
+/usr/share/man/man1/notmuch-compact.1.gz
+/usr/share/man/man1/notmuch-config.1.gz
+/usr/share/man/man1/notmuch-count.1.gz
+/usr/share/man/man1/notmuch-dump.1.gz
+/usr/share/man/man1/notmuch-emacs-mua.1.gz
+/usr/share/man/man1/notmuch-insert.1.gz
+/usr/share/man/man1/notmuch-new.1.gz
+/usr/share/man/man1/notmuch-reindex.1.gz
+/usr/share/man/man1/notmuch-reply.1.gz
+/usr/share/man/man1/notmuch-restore.1.gz
+/usr/share/man/man1/notmuch-search.1.gz
+/usr/share/man/man1/notmuch-setup.1.gz
+/usr/share/man/man1/notmuch-show.1.gz
+/usr/share/man/man1/notmuch-tag.1.gz
+/usr/share/man/man1/notmuch.1.gz
+/usr/share/man/man5/notmuch-hooks.5.gz
+/usr/share/man/man7/notmuch-properties.7.gz
+/usr/share/man/man7/notmuch-search-terms.7.gz

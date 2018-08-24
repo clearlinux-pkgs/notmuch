@@ -1,8 +1,9 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-zlib
-zlib-dev
+Sphinx
 gmime
 gmime-dev
 talloc
 talloc-dev
+zlib
+zlib-dev
