@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xF202971DA4A79E2C (bremner@unb.ca)
 #
 Name     : notmuch
-Version  : 0.29
-Release  : 22
-URL      : https://notmuchmail.org/releases/notmuch-0.29.tar.xz
-Source0  : https://notmuchmail.org/releases/notmuch-0.29.tar.xz
-Source99 : https://notmuchmail.org/releases/notmuch-0.29.tar.xz.asc
+Version  : 0.29.1
+Release  : 23
+URL      : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz
+Source0  : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz
+Source99 : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz.asc
 Summary  : Notmuch is not much of an email program
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+ LGPL-2.1
@@ -106,7 +106,7 @@ man components for the notmuch package.
 
 
 %prep
-%setup -q -n notmuch-0.29
+%setup -q -n notmuch-0.29.1
 %patch1 -p1
 
 %build
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559910859
+export SOURCE_DATE_EPOCH=1560308439
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -126,7 +126,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1559910859
+export SOURCE_DATE_EPOCH=1560308439
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
 cp COPYING %{buildroot}/usr/share/package-licenses/notmuch/COPYING
