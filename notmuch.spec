@@ -6,7 +6,7 @@
 #
 Name     : notmuch
 Version  : 0.29.1
-Release  : 23
+Release  : 24
 URL      : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz
 Source0  : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz
 Source99 : https://notmuchmail.org/releases/notmuch-0.29.1.tar.xz.asc
