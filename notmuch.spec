@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x0345391B55AA1521 (bremner@unb.ca)
 #
 Name     : notmuch
-Version  : 0.29.2
-Release  : 26
-URL      : https://notmuchmail.org/releases/notmuch-0.29.2.tar.xz
-Source0  : https://notmuchmail.org/releases/notmuch-0.29.2.tar.xz
-Source1 : https://notmuchmail.org/releases/notmuch-0.29.2.tar.xz.asc
+Version  : 0.29.3
+Release  : 27
+URL      : https://notmuchmail.org/releases/notmuch-0.29.3.tar.xz
+Source0  : https://notmuchmail.org/releases/notmuch-0.29.3.tar.xz
+Source1 : https://notmuchmail.org/releases/notmuch-0.29.3.tar.xz.asc
 Summary  : Notmuch is not much of an email program
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+ LGPL-2.1
@@ -28,7 +28,6 @@ BuildRequires : gnupg
 BuildRequires : ruby
 BuildRequires : talloc
 BuildRequires : talloc-dev
-BuildRequires : util-linux
 BuildRequires : valgrind
 BuildRequires : xapian-core-dev
 BuildRequires : zlib
@@ -107,7 +106,8 @@ man components for the notmuch package.
 
 
 %prep
-%setup -q -n notmuch-0.29.2
+%setup -q -n notmuch-0.29.3
+cd %{_builddir}/notmuch-0.29.3
 %patch1 -p1
 
 %build
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571844093
+export SOURCE_DATE_EPOCH=1575384455
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -129,14 +129,14 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1571844093
+export SOURCE_DATE_EPOCH=1575384455
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
-cp %{_builddir}/notmuch-0.29.2/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
-cp %{_builddir}/notmuch-0.29.2/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
-cp %{_builddir}/notmuch-0.29.2/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
-cp %{_builddir}/notmuch-0.29.2/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/notmuch-0.29.2/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/303a8f6fb18fce3c1995ad372cff9e7a454dc59a
+cp %{_builddir}/notmuch-0.29.3/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
+cp %{_builddir}/notmuch-0.29.3/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
+cp %{_builddir}/notmuch-0.29.3/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/notmuch-0.29.3/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/notmuch-0.29.3/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/303a8f6fb18fce3c1995ad372cff9e7a454dc59a
 %make_install
 
 %files
