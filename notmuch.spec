@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x0345391B55AA1521 (bremner@unb.ca)
 #
 Name     : notmuch
-Version  : 0.30
-Release  : 28
-URL      : https://notmuchmail.org/releases/notmuch-0.30.tar.xz
-Source0  : https://notmuchmail.org/releases/notmuch-0.30.tar.xz
-Source1  : https://notmuchmail.org/releases/notmuch-0.30.tar.xz.asc
+Version  : 0.31
+Release  : 29
+URL      : https://notmuchmail.org/releases/notmuch-0.31.tar.xz
+Source0  : https://notmuchmail.org/releases/notmuch-0.31.tar.xz
+Source1  : https://notmuchmail.org/releases/notmuch-0.31.tar.xz.asc
 Summary  : Thread-based email index, search and tagging
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+ LGPL-2.1
@@ -107,8 +107,8 @@ man components for the notmuch package.
 
 
 %prep
-%setup -q -n notmuch-0.30
-cd %{_builddir}/notmuch-0.30
+%setup -q -n notmuch-0.31
+cd %{_builddir}/notmuch-0.31
 %patch1 -p1
 
 %build
@@ -116,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595266010
+export SOURCE_DATE_EPOCH=1599602583
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -129,13 +129,13 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1595266010
+export SOURCE_DATE_EPOCH=1599602583
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
-cp %{_builddir}/notmuch-0.30/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
-cp %{_builddir}/notmuch-0.30/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
-cp %{_builddir}/notmuch-0.30/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
-cp %{_builddir}/notmuch-0.30/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/notmuch-0.31/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
+cp %{_builddir}/notmuch-0.31/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
+cp %{_builddir}/notmuch-0.31/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/notmuch-0.31/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 
 %files
@@ -158,7 +158,7 @@ cp %{_builddir}/notmuch-0.30/contrib/go/LICENSE %{buildroot}/usr/share/package-l
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libnotmuch.so.5
-/usr/lib64/libnotmuch.so.5.2.0
+/usr/lib64/libnotmuch.so.5.3.0
 
 %files license
 %defattr(0644,root,root,0755)
