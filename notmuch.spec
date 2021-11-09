@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x0345391B55AA1521 (bremner@unb.ca)
 #
 Name     : notmuch
-Version  : 0.34
-Release  : 41
-URL      : https://notmuchmail.org/releases/notmuch-0.34.tar.xz
-Source0  : https://notmuchmail.org/releases/notmuch-0.34.tar.xz
-Source1  : https://notmuchmail.org/releases/notmuch-0.34.tar.xz.asc
+Version  : 0.34.1
+Release  : 42
+URL      : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz
+Source0  : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz
+Source1  : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz.asc
 Summary  : Thread-based email index, search and tagging
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+ LGPL-2.1
@@ -17,7 +17,6 @@ Requires: notmuch-bin = %{version}-%{release}
 Requires: notmuch-data = %{version}-%{release}
 Requires: notmuch-lib = %{version}-%{release}
 Requires: notmuch-license = %{version}-%{release}
-Requires: notmuch-man = %{version}-%{release}
 Requires: cffi
 Requires: talloc-lib
 BuildRequires : Sphinx
@@ -97,17 +96,9 @@ Group: Default
 license components for the notmuch package.
 
 
-%package man
-Summary: man components for the notmuch package.
-Group: Default
-
-%description man
-man components for the notmuch package.
-
-
 %prep
-%setup -q -n notmuch-0.34
-cd %{_builddir}/notmuch-0.34
+%setup -q -n notmuch-0.34.1
+cd %{_builddir}/notmuch-0.34.1
 %patch1 -p1
 
 %build
@@ -115,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634766006
+export SOURCE_DATE_EPOCH=1636475477
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -124,18 +115,18 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
-%configure --disable-static
+%configure --disable-static --without-docs
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1634766006
+export SOURCE_DATE_EPOCH=1636475477
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
-cp %{_builddir}/notmuch-0.34/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
-cp %{_builddir}/notmuch-0.34/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
-cp %{_builddir}/notmuch-0.34/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
-cp %{_builddir}/notmuch-0.34/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/notmuch-0.34/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f
+cp %{_builddir}/notmuch-0.34.1/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
+cp %{_builddir}/notmuch-0.34.1/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
+cp %{_builddir}/notmuch-0.34.1/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/notmuch-0.34.1/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/notmuch-0.34.1/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f
 %make_install
 
 %files
@@ -167,26 +158,3 @@ cp %{_builddir}/notmuch-0.34/debian/copyright %{buildroot}/usr/share/package-lic
 /usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
 /usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
 /usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f
-
-%files man
-%defattr(0644,root,root,0755)
-/usr/share/man/man1/notmuch-address.1.gz
-/usr/share/man/man1/notmuch-compact.1.gz
-/usr/share/man/man1/notmuch-config.1.gz
-/usr/share/man/man1/notmuch-count.1.gz
-/usr/share/man/man1/notmuch-dump.1.gz
-/usr/share/man/man1/notmuch-emacs-mua.1.gz
-/usr/share/man/man1/notmuch-insert.1.gz
-/usr/share/man/man1/notmuch-new.1.gz
-/usr/share/man/man1/notmuch-reindex.1.gz
-/usr/share/man/man1/notmuch-reply.1.gz
-/usr/share/man/man1/notmuch-restore.1.gz
-/usr/share/man/man1/notmuch-search.1.gz
-/usr/share/man/man1/notmuch-setup.1.gz
-/usr/share/man/man1/notmuch-show.1.gz
-/usr/share/man/man1/notmuch-tag.1.gz
-/usr/share/man/man1/notmuch.1.gz
-/usr/share/man/man5/notmuch-hooks.5.gz
-/usr/share/man/man7/notmuch-properties.7.gz
-/usr/share/man/man7/notmuch-search-terms.7.gz
-/usr/share/man/man7/notmuch-sexp-queries.7.gz
