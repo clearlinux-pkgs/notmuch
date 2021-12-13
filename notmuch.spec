@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x0345391B55AA1521 (bremner@unb.ca)
 #
 Name     : notmuch
-Version  : 0.34.1
-Release  : 42
-URL      : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz
-Source0  : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz
-Source1  : https://notmuchmail.org/releases/notmuch-0.34.1.tar.xz.asc
+Version  : 0.34.2
+Release  : 43
+URL      : https://notmuchmail.org/releases/notmuch-0.34.2.tar.xz
+Source0  : https://notmuchmail.org/releases/notmuch-0.34.2.tar.xz
+Source1  : https://notmuchmail.org/releases/notmuch-0.34.2.tar.xz.asc
 Summary  : Thread-based email index, search and tagging
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+ LGPL-2.1
@@ -17,14 +17,13 @@ Requires: notmuch-bin = %{version}-%{release}
 Requires: notmuch-data = %{version}-%{release}
 Requires: notmuch-lib = %{version}-%{release}
 Requires: notmuch-license = %{version}-%{release}
-Requires: cffi
 Requires: talloc-lib
 BuildRequires : Sphinx
 BuildRequires : buildreq-distutils3
-BuildRequires : cffi
 BuildRequires : gmime
 BuildRequires : gmime-dev
 BuildRequires : gnupg
+BuildRequires : pypi(cffi)
 BuildRequires : ruby
 BuildRequires : talloc
 BuildRequires : talloc-dev
@@ -97,8 +96,8 @@ license components for the notmuch package.
 
 
 %prep
-%setup -q -n notmuch-0.34.1
-cd %{_builddir}/notmuch-0.34.1
+%setup -q -n notmuch-0.34.2
+cd %{_builddir}/notmuch-0.34.2
 %patch1 -p1
 
 %build
@@ -106,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636475477
+export SOURCE_DATE_EPOCH=1639417613
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -119,14 +118,14 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1636475477
+export SOURCE_DATE_EPOCH=1639417613
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
-cp %{_builddir}/notmuch-0.34.1/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
-cp %{_builddir}/notmuch-0.34.1/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
-cp %{_builddir}/notmuch-0.34.1/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
-cp %{_builddir}/notmuch-0.34.1/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/notmuch-0.34.1/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f
+cp %{_builddir}/notmuch-0.34.2/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510
+cp %{_builddir}/notmuch-0.34.2/COPYING-GPL-3 %{buildroot}/usr/share/package-licenses/notmuch/c5c371a4b28c34d8951a989d53cd28d6035b9662
+cp %{_builddir}/notmuch-0.34.2/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/notmuch-0.34.2/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/notmuch-0.34.2/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f
 %make_install
 
 %files
