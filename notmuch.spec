@@ -6,7 +6,7 @@
 #
 Name     : notmuch
 Version  : 0.35
-Release  : 46
+Release  : 47
 URL      : https://notmuchmail.org/releases/notmuch-0.35.tar.xz
 Source0  : https://notmuchmail.org/releases/notmuch-0.35.tar.xz
 Source1  : https://notmuchmail.org/releases/notmuch-0.35.tar.xz.asc
@@ -23,6 +23,7 @@ BuildRequires : gmime
 BuildRequires : gmime-dev
 BuildRequires : gnupg
 BuildRequires : pypi(cffi)
+BuildRequires : pypi-sphinx
 BuildRequires : ruby
 BuildRequires : talloc
 BuildRequires : talloc-dev
@@ -104,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644177814
+export SOURCE_DATE_EPOCH=1645142396
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -117,7 +118,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1644177814
+export SOURCE_DATE_EPOCH=1645142396
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
 cp %{_builddir}/notmuch-0.35/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510

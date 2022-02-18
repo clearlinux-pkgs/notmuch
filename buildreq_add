@@ -7,3 +7,4 @@ talloc-dev
 zlib
 zlib-dev
 xapian-core-dev
+pypi-sphinx
