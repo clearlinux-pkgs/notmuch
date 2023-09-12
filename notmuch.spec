@@ -7,7 +7,7 @@
 #
 Name     : notmuch
 Version  : 0.38
-Release  : 51
+Release  : 52
 URL      : https://notmuchmail.org/releases/notmuch-0.38.tar.xz
 Source0  : https://notmuchmail.org/releases/notmuch-0.38.tar.xz
 Source1  : https://notmuchmail.org/releases/notmuch-0.38.tar.xz.asc
@@ -112,16 +112,13 @@ man components for the notmuch package.
 %setup -q -n notmuch-0.38
 cd %{_builddir}/notmuch-0.38
 %patch -P 1 -p1
-pushd ..
-cp -a notmuch-0.38 buildavx2
-popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1694530796
+export SOURCE_DATE_EPOCH=1694531600
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -133,18 +130,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonl
 %configure --disable-static
 make  %{?_smp_mflags}
 
-unset PKG_CONFIG_PATH
-pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
-export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
-export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
-export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
-%configure --disable-static
-make  %{?_smp_mflags}
-popd
 %install
-export SOURCE_DATE_EPOCH=1694530796
+export SOURCE_DATE_EPOCH=1694531600
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/notmuch
 cp %{_builddir}/notmuch-%{version}/COPYING %{buildroot}/usr/share/package-licenses/notmuch/36e7b160de7f366db25bd7d9f31efd49e8cbe510 || :
@@ -152,18 +139,13 @@ cp %{_builddir}/notmuch-%{version}/COPYING-GPL-3 %{buildroot}/usr/share/package-
 cp %{_builddir}/notmuch-%{version}/bindings/python/docs/COPYING %{buildroot}/usr/share/package-licenses/notmuch/0dd432edfab90223f22e49c02e2124f87d6f0a56 || :
 cp %{_builddir}/notmuch-%{version}/contrib/go/LICENSE %{buildroot}/usr/share/package-licenses/notmuch/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
 cp %{_builddir}/notmuch-%{version}/debian/copyright %{buildroot}/usr/share/package-licenses/notmuch/cbd7a33d29f170fcd1a8e1d391891574e449c01f || :
-pushd ../buildavx2/
-%make_install_v3
-popd
 %make_install
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
-/V3/usr/bin/notmuch
 /usr/bin/notmuch
 
 %files data
@@ -178,7 +160,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libnotmuch.so.5.6.0
 /usr/lib64/libnotmuch.so.5
 /usr/lib64/libnotmuch.so.5.6.0
 
