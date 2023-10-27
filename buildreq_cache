@@ -1,4 +1,4 @@
-0.38
+0.38.1
 gnupg
 pkgconfig(gpgme)
 ruby
